@@ -7,8 +7,9 @@ const Worldcup = () => {
 
   useEffect(() => {
     let shuffleAnimalData = animalData.sort(() => {
-      return 1;
+      return Math.random() - 0.5;
     });
+    //랜덤하게 섞기, 기본 가나다 순은 sort(); 내가 정한 순서로는 return 1; 역순은 return -1;
 
     console.log(shuffleAnimalData);
   }, []);
