@@ -10,7 +10,7 @@ function AnimalCard({ animal, choice, onClickChoice }) {
         className={`text-2xl mt-4 px-4 py-2 rounded-md ${
           choice % 2 === 0 ? "bg-green-100" : "bg-blue-100"
         }`}
-        onClick={onClickChoice}
+        onClick={onClickChoice(animal)}
       >
         선택
       </button>
