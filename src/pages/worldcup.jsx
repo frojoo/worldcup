@@ -4,7 +4,12 @@ import { useState } from "react";
 import AnimalCard from "../components/AnimalCard";
 
 const Worldcup = () => {
-  const [shuffleAnimal, setShuffleAnimal] = useState(animalData);
+  const [shuffleAnimal, setShuffleAnimal] = useState();
+  const [choice, setChoice] = useState(0);
+
+  const onClickChoice = () => {
+    setChoice(choice + 2);
+  };
 
   useEffect(() => {
     let shuffleAnimalData = animalData.sort(() => {
@@ -15,17 +20,21 @@ const Worldcup = () => {
     setShuffleAnimal(shuffleAnimalData);
   }, []);
 
-  useEffect(() => {
-    console.log(shuffleAnimal[0]);
-  }, [shuffleAnimal]);
-
   return (
     <div className="bg-pink-200 min-h-screen flex justify-center items-center">
       {shuffleAnimal && (
         <>
-          <AnimalCard animal={shuffleAnimal[0]} />
+          <AnimalCard
+            animal={shuffleAnimal[choice]}
+            choice={choice}
+            onClickChoice={onClickChoice}
+          />
           <div className="text-2xl mx-8 font-bold">VS</div>
-          <AnimalCard animal={shuffleAnimal[1]} />
+          <AnimalCard
+            animal={shuffleAnimal[choice + 1]}
+            choice={choice + 1}
+            onClickChoice={onClickChoice}
+          />
         </>
       )}
     </div>
